@@ -64,20 +64,22 @@
   // ---------------------
   // Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in an array of numbers. For example, sum([1,2,3,4]) should return 10, and multiply([1,2,3,4]) should return 24.
   // ---------------------
-  //The initial sum is 0 then the length is taken from the array and added sequentially until there are no more items to add
-  
+ 
   //arr.reduce loops through the array and executes function of the accumulated (acc) value and the current index; return the accumulated value + i
   function sum(arr) {
     return arr.reduce(function(acc, i) {
-      return acc + 1;
+      return acc + i;
     })
   }
   
 
 
   function multiply(array){
-    let multiple = multiply.reduce((a,b) => a*b)
-    return multiple
+    let multiple = 1;
+    for(let i = 0; i < array.length; i++){
+      multiple *= array[i]
+  }
+  return multiple;
   }
 
 
@@ -103,7 +105,7 @@
         length = arr[i].length;
       }
     }
-  return length;
+    return length;
   }
   
 
@@ -111,11 +113,17 @@
   // Define a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i.
   // ---------------------
 
-// filter() returns a new arrray that will only return array values with lengths that are shorter than the vale given to i.
-function filterLongWords(arr, i) {
-	arr.filter(function(word) {
-		word.length > i;
-	});
+
+function filterLongWords(arr, i){
+  // Set an empty arra to push the words to
+  const myArr = [];
+  // Loops through argued array and pushes words longer than the integer 'i' into myArr
+  for(let j = 0; j < arr.length; j++){
+    if (arr[j].length > i){
+      myArr.push(arr[j])
+    }
+  }
+  return myArr;
 }
 
 
@@ -125,9 +133,12 @@ function filterLongWords(arr, i) {
   // ---------------------
   function charFreq(str){
     const freqList = [];
-    str.split('').forEach(function < char) {
-      freqList[char] = freqList[char] + 1 || 1;
-    };
+    // Splits given array and goes through each element.
+    // forEach goes through each value of the array (from the str.split(“”))
+    // At the end it returns the frequency list variable for the element targeted
+    str.split('').forEach(function (arr1) {
+      freqList[arr1] = freqList[arr1] + 1 || 1;
+    })
     return freqList;
   }
   
