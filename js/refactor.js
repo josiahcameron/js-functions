@@ -17,293 +17,307 @@
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
+  // 1. --------------------------------------------
 
-// 1. --------------------------------------------
+  // This is a named function, convert it
+  // to a variable containing an anonymous
+  // function
 
-// This is a named function, convert it
-// to a variable containing an anonymous
-// function
+  function doSomethingCool() {
+    console.log("Something Cool!");
+  }
 
-function doSomethingCool() {
-  console.log("Something Cool!");
-}
+  // Put your answer below -------------------------
+  let doSomethingCool = function () {
+    console.log("Something cool!");
+  };
 
-// Put your answer below -------------------------
+  // -----------------------------------------------
 
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
-// -----------------------------------------------
+  // 2. --------------------------------------------
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  // Here we are using setTimeout to call a function
+  // after 2 seconds. Refactor to use an anonymous
+  // function
 
-// 2. --------------------------------------------
+  function sayHi() {
+    alert("Hello, World!");
+  }
 
-// Here we are using setTimeout to call a function
-// after 2 seconds. Refactor to use an anonymous
-// function
+  setTimeout(sayHi, 2000);
 
-function sayHi() {
-  alert("Hello, World!");
-}
+  // Put your answer below -------------------------
 
-setTimeout(sayHi, 2000);
+  let sayHi = function () {
+    alert("Hello World!");
+  };
+  setTimeout(sayHi, 2000);
 
-// Put your answer below -------------------------
+  // -----------------------------------------------
 
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
-// -----------------------------------------------
+  // 3. --------------------------------------------
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  // The code below will log the letter twice. What
+  // is the order that will be logged?
 
-// 3. --------------------------------------------
+  // [a]: x then y then z
+  // [b]: y then z
+  // [c]: z then y
+  // [d]: x then z
 
-// The code below will log the letter twice. What
-// is the order that will be logged?
+  // Please explain your answer.
 
-// [a]: x then y then z
-// [b]: y then z
-// [c]: z then y
-// [d]: x then z
+  var letter = "x";
 
-// Please explain your answer.
+  setTimeout(function () {
+    letter = "y";
+    console.log("The letter is", letter);
+  }, 1);
 
-var letter = "x";
-
-setTimeout(function(){
-  letter = "y";
+  letter = "z";
   console.log("The letter is", letter);
-}, 1);
 
-letter = "z";
-console.log("The letter is", letter);
+  // Put your answer below -------------------------
+  // The answer is C. setTimout is an asynchronous function, so it doesn't affect other functions.
+  // -----------------------------------------------
 
-// Put your answer below -------------------------
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
+  // 4. --------------------------------------------
 
-// -----------------------------------------------
+  // The function below reverses a string. The body
+  // of the function is 5 lines of code. Refactor
+  // this function to do the same thing with 1 line
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  var reverseStr = function (str) {
+    var arr;
+    arr = str.split("");
+    arr = arr.reverse();
+    str = arr.join("");
+    return str;
+  };
 
-// 4. --------------------------------------------
+  // Put your answer below -------------------------
+  var arr = (str) => {
+    return str.join("").reverse().split("");
+  };
+  // -----------------------------------------------
 
-// The function below reverses a string. The body
-// of the function is 5 lines of code. Refactor
-// this function to do the same thing with 1 line
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
-var reverseStr = function(str) {
-  var arr;
-  arr = str.split("");
-  arr = arr.reverse();
-  str = arr.join("");
-  return str;
-};
+  // 5. --------------------------------------------
 
-// Put your answer below -------------------------
+  // The function below takes the spanish word for
+  // the colors red, white, blue, green, and black
+  // and returns the hex code for that color.
+  // Refactor this function to use an object
+  // instead of an if/else statement.
 
+  var spanishColor = function (colorName) {
+    if (colorName.toLowerCase() === "rojo") {
+      return "#ff0000";
+    } else if (colorName.toLowerCase() === "blanco") {
+      return "#ffffff";
+    } else if (colorName.toLowerCase() === "azul") {
+      return "#0000ff";
+    } else if (colorName.toLowerCase() === "verde") {
+      return "#00ff00";
+    } else if (colorName.toLowerCase() === "negro") {
+      return "#000000";
+    }
+  };
 
-
-// -----------------------------------------------
-
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-
-// 5. --------------------------------------------
-
-// The function below takes the spanish word for
-// the colors red, white, blue, green, and black
-// and returns the hex code for that color.
-// Refactor this function to use an object
-// instead of an if/else statement.
-
-var spanishColor = function(colorName) {
-  if (colorName.toLowerCase() === "rojo") {
-    return "#ff0000";
+  // Put your answer below -------------------------
+  function spanishColor(colorName) {
+    const color = {
+      rojo: "#ff0000",
+      blanco: "0000ff",
+      azul: "#0000ff",
+      verde: "#00ff00",
+      negro: "#000000",
+    };
+    return spanishColor[colorName.toLowerCase()];
   }
-  else if (colorName.toLowerCase() === "blanco") {
-    return "#ffffff";
-  }
-  else if (colorName.toLowerCase() === "azul") {
-    return "#0000ff";
-  }
-  else if (colorName.toLowerCase() === "verde") {
-    return "#00ff00";
-  }
-  else if (colorName.toLowerCase() === "negro") {
-    return "#000000";
-  }
-};
+  // -----------------------------------------------
 
-// Put your answer below -------------------------
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
+  // 6. --------------------------------------------
 
+  // Below is a variable *declaration* and an
+  // *assignment* in a single line of code.
+  // Break it up so that the declaration and
+  // assignment are happening on 2 seperate lines.
 
-// -----------------------------------------------
+  var foo = "bar";
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  // Put your answer below -------------------------
+  var foo;
+  foo = "bar";
+  // -----------------------------------------------
 
-// 6. --------------------------------------------
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
-// Below is a variable *declaration* and an
-// *assignment* in a single line of code.
-// Break it up so that the declaration and
-// assignment are happening on 2 seperate lines.
+  // 7. --------------------------------------------
 
-var foo = "bar";
+  // The function `callTenTimes` takes an argument
+  // that is another function and will call that
+  // function 10 times. Refactor this into another
+  // function called `callNtimes` that allows you
+  // to specify a number of times to call the given
+  // function.
 
-// Put your answer below -------------------------
+  var callTenTimes = function (callback) {
+    var range = Array.from(Array(10).keys());
+    range.forEach(callback);
+  };
 
+  // callTenTime(functionName);
 
-// -----------------------------------------------
+  // Put your answer below -------------------------
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  // -----------------------------------------------
 
-// 7. --------------------------------------------
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
-// The function `callTenTimes` takes an argument
-// that is another function and will call that
-// function 10 times. Refactor this into another
-// function called `callNtimes` that allows you
-// to specify a number of times to call the given
-// function.
+  // 8. --------------------------------------------
 
-var callTenTimes = function(callback) {
-  var range = Array.from(Array(10).keys());
-  range.forEach(callback);
-};
+  // Below is the beginning code for an awesome game
+  // but already suffers a vulnerability that allows
+  // the savvy user to open the console and adjust
+  // the score to whatever they want. Refactor the
+  // code to protect from this.
 
-// callTenTime(functionName);
+  // HINT: "global scope"
 
-// Put your answer below -------------------------
+  var score = 0;
 
+  var increaseScore = function () {
+    score++;
+  };
 
-// -----------------------------------------------
+  var decreaseScore = function () {
+    score--;
+  };
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  // Put your answer below -------------------------
+  let score = 0;
 
-// 8. --------------------------------------------
+  const increaseScore = function () {
+    score++;
+  };
 
-// Below is the beginning code for an awesome game
-// but already suffers a vulnerability that allows
-// the savvy user to open the console and adjust
-// the score to whatever they want. Refactor the
-// code to protect from this.
+  const decreaseScore = function () {
+    score--;
+  };
+  // -----------------------------------------------
 
-// HINT: "global scope"
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
-var score = 0;
+  // 9. --------------------------------------------
 
-var increaseScore = function() {
-  score++;
-};
+  // The below function does not work. The variable
+  // twoPlusTwo gets set to `undefined`. Refactor
+  // the function to make it work.
 
-var decreaseScore = function() {
-  score--;
-};
+  var addNumbers = function (numberA, numberB) {
+    console.log(numberA + numberB);
+  };
 
-// Put your answer below -------------------------
+  var twoPlusTwo = addNumbers(2, 2);
 
+  // Put your answer below -------------------------
+  var addNumbers = function (numberA, numberB) {
+    number = parseInt(numberA) + parseInt(numberB);
+    console.log(number);
+  };
+  // -----------------------------------------------
 
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
-// -----------------------------------------------
+  // 10. -------------------------------------------
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  // Below is a snippet of code taken from a racing
+  // game (not really!) It allows you to accelerate
+  // the speed by a given amount. The problem is if
+  // you call the function without specifying an
+  // amount, it inadvertently sets the speed to NaN
+  // First write a comment that explains why it was
+  // setting speed to NaN when no parameter is given
+  // Then refactor the function to have a default
+  // amount of 1 if no param is given.
 
-// 9. --------------------------------------------
+  var speed = 0;
 
-// The below function does not work. The variable
-// twoPlusTwo gets set to `undefined`. Refactor
-// the function to make it work.
+  var accelerate = function (amount) {
+    speed += amount;
+  };
 
-var addNumbers = function(numberA, numberB) {
-  console.log(numberA + numberB);
-};
+  // Put your answer below -------------------------
+  // 0 is a falsey value, so it returns NaN
 
-var twoPlusTwo = addNumbers(2,2);
+  var accelerate = function (amount = 1) {
+    speed += amount;
+  };
+  // -----------------------------------------------
 
-// Put your answer below -------------------------
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
+  //            ___  ____  _  ____  ______        //
+  //           / _ )/ __ \/ |/ / / / / __/        //
+  //          / _  / /_/ /    / /_/ /\ \          //
+  //         /____/\____/_/|_/\____/___/          //
+  //                                              //
+  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 
+  // The function below allows you to call another
+  // function at a later time. It takes 2 params, an
+  // amount of miliseconds and a function. It will
+  // call the function that many miliseconds later.
+  // Refactor it so that is has a default timeout.
 
+  // This is more advanced than the default param on
+  // the accelerate function. This is because there
+  // is another parameter to consider.
 
-// -----------------------------------------------
+  // When setting the timeout, the function needs to
+  // work like this:
 
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
+  //     callLater(1000, function(){
+  //       ...
+  //     });
 
-// 10. -------------------------------------------
+  // When using the default timeout, the function
+  // needs to work like this:
 
-// Below is a snippet of code taken from a racing
-// game (not really!) It allows you to accelerate
-// the speed by a given amount. The problem is if
-// you call the function without specifying an
-// amount, it inadvertently sets the speed to NaN
-// First write a comment that explains why it was
-// setting speed to NaN when no parameter is given
-// Then refactor the function to have a default
-// amount of 1 if no param is given.
+  //     callLater(function(){
+  //       ...
+  //     });
 
-var speed = 0;
+  var callLater = function (timeout, callback) {
+    setTimeout(callback, timeout);
+  };
 
-var accelerate = function(amount) {
-  speed += amount;
-};
+  // Put your answer below -------------------------
 
-// Put your answer below -------------------------
+  // -----------------------------------------------
 
-
-
-// -----------------------------------------------
-
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-//            ___  ____  _  ____  ______        //
-//           / _ )/ __ \/ |/ / / / / __/        //
-//          / _  / /_/ /    / /_/ /\ \          //
-//         /____/\____/_/|_/\____/___/          //
-//                                              //
-//////////////////////////////////////////////////
-//////////////////////////////////////////////////
-
-// The function below allows you to call another
-// function at a later time. It takes 2 params, an
-// amount of miliseconds and a function. It will
-// call the function that many miliseconds later.
-// Refactor it so that is has a default timeout.
-
-// This is more advanced than the default param on
-// the accelerate function. This is because there
-// is another parameter to consider.
-
-// When setting the timeout, the function needs to
-// work like this:
-
-//     callLater(1000, function(){
-//       ...
-//     });
-
-// When using the default timeout, the function
-// needs to work like this:
-
-//     callLater(function(){
-//       ...
-//     });
-
-var callLater = function(timeout, callback) {
-  setTimeout(callback, timeout);
-};
-
-// Put your answer below -------------------------
-
-
-// -----------------------------------------------
-
-//////////////////////////////////////////////////
+  //////////////////////////////////////////////////
 })();
